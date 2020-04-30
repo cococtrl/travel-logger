@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if object %}
+    <h1>Edit <span class="teal-text">{{ object.name }}</span></h1>
+{% else %}
+    <h1>Add Trip</h1>
+{% endif %}
+
+<form action="" method="post">
+    {% csrf_token %}
+    
+    {{ form }}
+    
+    <input type="submit" value="Submit" class="btn">
+    <a class="btn" href="{% url 'index' %}">Cancel</a>
+</form>
+
+{% endblock %}
