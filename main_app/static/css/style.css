@@ -1,0 +1,41 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+nav{
+    background-color: #DE541E;
+    height: auto;  
+}
+
+nav li a {
+    color: #003049;
+    display: flex;
+    flex-direction: row;
+}
+
+#tripcards {
+    border-color: #0093dd;
+    border-radius: 20px;
+}
+/*  
+span.card-title {
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 24px;
+} */
+
+div.card.content {
+    margin: 70px;
+}
+
+footer.page-footer {
+    background-color: #F6B9B0;
+    padding-top: 0;
+    text-align: right;
+    color: gray
+}
