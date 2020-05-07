@@ -8,22 +8,21 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Travel Log</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <link href="https://fonts.googleapis.com/css2?family=Chela+One&family=Pattaya&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <body>
   <header class="navbar-fixed">
     <nav>
-      <div class="nav-wrapper">
-        <ul>
-          <li><a href="/" class="left brand-logo">&nbsp;&nbsp;Travel Log</a></li>
-        </ul>
-        <ul class="right">
-          <li><a href="{% url 'about' %}">About</a></li>
-          <li><a href="{% url 'trips_create' %}">Add a Trip</a></li>
-          <li><a href="{% url 'index' %}">View All Trips</a></li>
-        </ul>
-      </div>
+      <ul>
+        <li><a href="/" class="brand-logo"><img src="{% static 'images/Travel.png' %}" width="100" height="100"></a></li>
+      </ul>
+       <ul class="right">
+        <li><a href="{% url 'trips_create' %}">Add a Trip</a></li>
+        <li><a href="{% url 'index' %}">View All Trips</a></li>
+        <li><a href="{% url 'about' %}">About</a></li>
+      </ul>
     </nav>
   </header>
   <main class="container">
