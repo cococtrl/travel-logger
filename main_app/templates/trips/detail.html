@@ -19,5 +19,38 @@
                 </div>
             </div>
         </div>
+        <div class="col s6">
+            <form action="{% url 'add_activity' trip.id %}" method="post">
+                {% csrf_token %}
+                {{ activity_form.as_p }}
+                <input type="submit" class="btn" value="Add Activity">
+              </form>
+            <table class="striped">
+              <thead>
+                <tr><th>Date/Time</th><th>Activity</th><th>Tickets</th></tr>
+              </thead>
+              <tbody>
+                {% for activity in trip.activity_set.all %}
+                  <tr>
+                    <td>{{activity.date}}</td>
+                    <td>{{activity.activity}}</td>
+                    <td>{{activity.get_tickets_display}}</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <script>
+          var dateEl = document.getElementById('id_date');
+          M.Datepicker.init(dateEl, {
+            format: 'dd-mm-yyyy',
+            defaultDate: new Date(),
+            setDefaultDate: true,
+            autoClose: true
+          });
+          var selectEl = document.getElementById('id_tickets');
+          M.FormSelect.init(selectEl);
+        </script>
 
 {% endblock %}

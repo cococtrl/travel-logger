@@ -1,8 +1,7 @@
-from django import forms
 from django.forms import ModelForm
-from .models import Trip
+from .models import Activity
 
-class TripForm(ModelForm):
-    class Meta:
-        model: Trip
-        fields: ['name', 'description', 'arrival', 'departure']
+class ActivityForm(ModelForm):
+  class Meta:
+    model = Activity
+    fields = ['activity', 'date', 'tickets']

@@ -11,10 +11,26 @@
 <form action="" method="post">
     {% csrf_token %}
     
-    {{ form }}
+    {{ form.as_p }}
     
     <input type="submit" value="Submit" class="btn">
     <a class="btn" href="{% url 'index' %}">Cancel</a>
 </form>
+<script>
+    var dateAr = document.getElementById('id_arrival');
+    M.Datepicker.init(dateAr, {
+      format: 'dd-mm-yyyy',
+      defaultDate: new Date(),
+      setDefaultDate: true,
+      autoClose: true
+    });
+    var dateDe = document.getElementById('id_departure');
+    M.Datepicker.init(dateDe, {
+      format: 'dd-mm-yyyy',
+      defaultDate: new Date(),
+      setDefaultDate: true,
+      autoClose: true
+    });
+  </script>
 
 {% endblock %}

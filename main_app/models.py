@@ -27,6 +27,11 @@ class Activity(models.Model):
         max_length=2,
         choices=TICKETS,
         default=TICKETS[0][0])
+    
     trip = models.ForeignKey(Trip, on_delete=models.CASCADE)
+    
     def __str__(self):
         return f"{self.get_tickets_display()} on {self.date}"
+
+    class Meta:
+        ordering = ['-date']
