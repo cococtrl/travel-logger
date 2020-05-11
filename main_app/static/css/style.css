@@ -27,7 +27,7 @@ nav{
 nav li a {
     font-family: 'Pattaya', sans-serif;
     font-size: 2rem;
-    color: #003049;
+    color: white;
     display: flex;
     flex-direction: row;
 }
@@ -47,8 +47,8 @@ div.card.content {
 }
 
 footer.page-footer {
-    background-color: #F6B9B0;
+    background-color: #DE541E;
     padding-top: 0;
     text-align: right;
-    color: gray
+    color: white
 }
