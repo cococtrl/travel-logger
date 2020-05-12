@@ -44,7 +44,7 @@
  <div class="col s6">
   <h3>{{ trip.name }} Trip Landmarks</h3>
   {% if trip.landmarks.count %}
-   {% for landmark in trip.landmarks.all %}
+  {% for landmark in trip.landmarks.all %}
     <div class="card">
      <div class="card-content">
       <span class="card-title">
@@ -56,7 +56,27 @@
  {% else %}
  <h5>No Landmarks :(</h5>{% endif %}
 </div>
-<!-- Available toys will come after this line -->
+<div class="col s6">
+  <h3>Nearby Landmarks</h3>
+  {% if landmarks.count %}
+    {% for landmark in landmarks.all %}
+      <div class="card">
+        <div class="card-content">
+          <span class="card-title">
+            {{ landmark.name }}
+          </span>
+        </div>
+        <div class="card-action">
+          <form action="{% url 'assoc_landmark' trip.id landmark.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn">Add</button>
+          </form>
+        </div>
+      </div>
+    {% endfor %}
+  {% else %}
+    <h5>You've seen all nearby landmarks during this trip! Awesome!</h5>
+  {% endif %}
 </div>
         <script>
           var dateEl = document.getElementById('id_date');

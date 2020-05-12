@@ -18,9 +18,11 @@ def trips_index(request):
 def trips_detail(request, trip_id):
     trip = Trip.objects.get(id=trip_id)
     activity_form = ActivityForm()
+    nearby_landmarks = Landmark.objects.exclude(id__in = trip.landmarks.all().values_list('id'))
     return render(request, 'trips/detail.html', { 
             'trip': trip,
-            'activity_form' : activity_form
+            'activity_form' : activity_form,
+            'landmarks' : nearby_landmarks
         })
 
 def add_activity(request, trip_id):
@@ -30,6 +32,10 @@ def add_activity(request, trip_id):
         new_activity.trip_id = trip_id
         new_activity.save()
         
+    return redirect('detail', trip_id=trip_id)
+
+def assoc_landmark(request, trip_id, landmark_id):
+    Trip.objects.get(id=trip_id).landmarks.add(landmark_id)
     return redirect('detail', trip_id=trip_id)
 
 class TripCreate(CreateView):
