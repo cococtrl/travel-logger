@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.views.generic import DetailView
+from django.views.generic import DetailView, ListView
 
-from .models import Trip
+from .models import Trip, Landmark
 from .forms import ActivityForm
 
 def home(request):
@@ -44,4 +44,24 @@ class TripUpdate(UpdateView):
 class TripDelete(DeleteView):
     model = Trip
     success_url = '/trips/'
+
+class LandmarkList(ListView):
+    model = Landmark
+
+class LandmarkDetail(DeleteView):
+    model = Landmark
+
+class LandmarkCreate(CreateView):
+    model = Landmark
+    fields = ['name']
+    success_url = '/landmarks/'
+
+class LandmarkUpdate(UpdateView):
+    model = Landmark
+    fields = ['name']
+    success_url = '/landmarks/'
+
+class LandmarkDelete(DeleteView):
+    model = Landmark
+    success_url = '/landmarks/'
 

@@ -8,11 +8,17 @@ TICKETS = (
     ('NA', 'Not Needed'),
 )
 
+class Landmark(models.Model):
+    name = models.CharField(max_length=100)
+    def __str__(self):
+        return f"{self.name}"
+
 class Trip(models.Model):
     name = models.CharField(max_length=50)
     description = models.CharField(max_length=250)
     arrival = models.DateField('Arrival Date')
     departure = models.DateField('Departure Date')
+    landmarks = models.ManyToManyField(Landmark)
 
     def __str__(self):
         return self.name
