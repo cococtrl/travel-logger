@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if object_list.count == 0 %}
+    <h3 class="red-text">There are no nearby landmarks</h3>
+    <a href="{% url 'landmarks_create' %}">Add a Landmark</a>
+{% else %}
+    {% for landmark in object_list %}
+    <div class="card">
+        <a href="{% url 'landmarks_detail' landmark.id %}">
+            <div class="card-content">
+                <span class="card-title">{{ landmark.name }}</span>
+            </div>
+        </a>
+    </div>
+    {% endfor %}
+{% endif %}
+
+{% endblock %}
