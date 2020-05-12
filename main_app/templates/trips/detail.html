@@ -49,6 +49,9 @@
      <div class="card-content">
       <span class="card-title">
        {{ landmark.name }}
+       <div class="card-action">
+        <a href="{% url 'landmarks_delete' landmark.id %}">Remove from trip</a>
+    </div>
       </span>
     </div>
  </div>
@@ -69,7 +72,7 @@
         <div class="card-action">
           <form action="{% url 'assoc_landmark' trip.id landmark.id %}" method="post">
             {% csrf_token %}
-            <button type="submit" class="btn">Add</button>
+            <button type="submit" class="btn">Add to trip</button>
           </form>
         </div>
       </div>
