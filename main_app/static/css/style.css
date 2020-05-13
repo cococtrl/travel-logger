@@ -9,6 +9,7 @@ main {
     flex: 1 0 auto;
     padding-top: 4rem;
     font-family: 'Pattaya', sans-serif;
+    color: rgb(44, 66, 108);
 }
 
 nav{
@@ -27,14 +28,15 @@ nav{
 nav li a {
     font-family: 'Pattaya', sans-serif;
     font-size: 2rem;
-    color: white;
+    color: #e5b2a8;
     display: flex;
     flex-direction: row;
 }
 
 #tripcards {
-    border-color: #0093dd;
+    border-color: #32476e;
     border-radius: 20px;
+    color: #32476e;
 }
 /*  
 span.card-title {
@@ -50,5 +52,5 @@ footer.page-footer {
     background-color: #DE541E;
     padding-top: 0;
     text-align: right;
-    color: white
+    color: #e5b2a8
 }
