@@ -8,13 +8,6 @@ TICKETS = (
     ('NA', 'Not Needed'),
 )
 
-class Photo(models.Model):
-    url = models.CharField(max_length=200)
-    cat = models.ForeignKey(Trip, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return f"Photo for trip_id: {self.trip_id} @{self.url}"
-
 class Landmark(models.Model):
     name = models.CharField(max_length=100)
     def __str__(self):
@@ -48,3 +41,10 @@ class Activity(models.Model):
 
     class Meta:
         ordering = ['-date']
+
+class Photo(models.Model):
+    url = models.CharField(max_length=200)
+    trip = models.ForeignKey(Trip, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Photo for trip_id: {self.trip_id} @{self.url}"
