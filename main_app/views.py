@@ -5,6 +5,12 @@ from django.views.generic import DetailView, ListView
 from .models import Trip, Landmark
 from .forms import ActivityForm
 
+import uuid
+import boto3
+S3_BASE_URL = 'https://s3-us-east-1.amazonaws.com/'
+BUCKET = 'travellogger'
+
+
 def home(request):
     return render(request, 'home.html')
 
@@ -36,6 +42,20 @@ def add_activity(request, trip_id):
 
 def assoc_landmark(request, trip_id, landmark_id):
     Trip.objects.get(id=trip_id).landmarks.add(landmark_id)
+    return redirect('detail', trip_id=trip_id)
+
+def add_photo(request, trip_id):
+    photo_file = request.FILES.get('photo-file', None)
+    if photo_file:
+        s3 = boto3.client('s3')
+        key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+        try:
+            s3.upload_fileobj(photo_file, BUCKET, key)
+            url = f"{S3_BASE_URL}{BUCKET}/{key}"
+            photo = Photo(url=url, trip_id=trip_id)
+            photo.save()
+        except:
+            print('An error occurred uploading file to S3')
     return redirect('detail', trip_id=trip_id)
 
 class TripCreate(CreateView):
@@ -70,4 +90,3 @@ class LandmarkUpdate(UpdateView):
 class LandmarkDelete(DeleteView):
     model = Landmark
     success_url = '/landmarks/'
-

@@ -15,5 +15,6 @@ urlpatterns = [
     path('landmarks/<int:pk>/update/', views.LandmarkUpdate.as_view(), name='landmarks_update'),
     path('landmarks/<int:pk>/delete/', views.LandmarkDelete.as_view(), name='landmarks_delete'),
     path('landmarks/create/', views.LandmarkCreate.as_view(), name='landmarks_create'),
-    path('trips/<int:trip_id>/assoc_landmark/<int:landmark_id>/', views.assoc_landmark, name='assoc_landmark')
+    path('trips/<int:trip_id>/assoc_landmark/<int:landmark_id>/', views.assoc_landmark, name='assoc_landmark'),
+    path('trips/<int:trip_id>/add_photo/', views.add_photo, name='add_photo')
 ]
